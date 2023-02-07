@@ -62,7 +62,7 @@ class MainController extends Controller
     {
         // Get the content from the current controller
         $content = parent::Display($request, $currentController);
-
+        
         // Include the head
         include(dirname(__FILE__) . '/../../pages/includes/head.php');
  

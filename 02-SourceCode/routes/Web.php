@@ -1,11 +1,29 @@
 <?php
-Route::Post("/", function(){
+include_once __DIR__."/../core/global/view.php";
+
+Route::Post("/anonym", function(){
     return "C'est une fonction anonyme";
 });
 
-Route::Post("/about", "HomeController@Contact");
+Route::Post("/about", function(){
+    return view("About")->WithDatas(
+        [
+            "title" => "Cette page est à propos de moi",
+            "description" => "Bonjour, ...."
+        ]
+    )->Parse();
+})->Name("About");
 
-Route::Post("/book", [HomeController::class, 'Home']);
+// ->WithDatas(
+//     [
+//         "title" => "Cette page est à propos de moi",
+//         "description" => "Bonjour, ...."
+//     ]
+// );
+
+Route::Post("/contact", "HomeController@Contact");
+
+Route::Post("/", [HomeController::class, 'Home']);
 
 // Route::Group("/admin", [AdminController::class, function()
 // {

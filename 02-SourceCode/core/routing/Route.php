@@ -8,7 +8,6 @@ class Route extends Router
 {
     public string $name, $link, $method;                    // Name, link anf Method of the route
     public array $action;                                   // Action of the route
-    public ?string $file, $folder;                          // Possible file and folder of the route
     public ?array $middlewares, $verifications;             // Array of possibles middlewares and verifications
 
     /**
@@ -19,11 +18,9 @@ class Route extends Router
      * @param ?file => File of the view for the route
      * @param ?folder => Folder of the view for the route
      */
-    public function __construct(string $link, string $method, string $file = null, string $folder = null)
+    public function __construct(string $link, string $method)
     {
         $this->link = $link;
-        $this->file = $file;
-        $this->folder = $folder;
         $this->method = $method;
     }
 
@@ -35,9 +32,9 @@ class Route extends Router
      * @param ?file => File of the view for the route
      * @param ?folder => Folder of the view for the route
      */
-    public static function Default(string $link, $action, string $file = null, string $folder = null) : Route
+    public static function Default(string $link, $action) : Route
     {
-        $route = new Route($link, "DEFAULT", $file, $folder);
+        $route = new Route($link, "DEFAULT");
         $route->ActionMethod($action);
         parent::AddRoute($route);
         return $route;
@@ -59,9 +56,9 @@ class Route extends Router
      * @param ?file => File of the view for the route
      * @param ?folder => Folder of the view for the route
      */
-    public static function Get(string $link, $action, string $file = null, string $folder = null) : Route
+    public static function Get(string $link, $action) : Route
     {
-        $route = new Route($link, "GET", $file, $folder);
+        $route = new Route($link, "GET");
         $route->ActionMethod($action);
         parent::AddRoute($route);
         return $route;
@@ -75,9 +72,9 @@ class Route extends Router
      * @param ?file => File of the view for the route
      * @param ?folder => Folder of the view for the route
      */
-    public static function Post(string $link, $action, string $file = null, string $folder = null) : Route
+    public static function Post(string $link, $action) : Route
     {
-        $route = new Route($link, "POST", $file, $folder);
+        $route = new Route($link, "POST");
         $route->ActionMethod($action);
         parent::AddRoute($route);
         return $route;
@@ -96,7 +93,6 @@ class Route extends Router
             $this->action["type"] = "anonym";
             $this->action["controller"] = null;
             $this->action["function"] = $action;
-            var_dump($this->action);
         } // Check if the action is a string
         else if (is_string($action))
         {
@@ -113,9 +109,7 @@ class Route extends Router
                 // Get the function
                 $this->action["function"] = $actionParts[1];
             }
-
-            var_dump($this->action);
-        }
+        } // Check if the action is an array
         else if(is_array($action))
         {
             // Set the action type
@@ -124,8 +118,6 @@ class Route extends Router
             $this->action["controller"] = $action[0];
             // Get the function
             $this->action["function"] = $action[1];
-
-            var_dump($this->action);
         }
 
         self::$routes[] = $this;

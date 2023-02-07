@@ -23,16 +23,15 @@ abstract class Controller
      */
     protected static function Display(Request $request, $controller)
     {
-        // Set the folder and the file if set
-        isset($request->route->folder) ? $controller->folder = $request->route->folder : null;
-        isset($request->route->file) ? $controller->file = $request->route->file : null;
-        
+        // Check if the controller is set        
         if (isset($controller)) 
         {
+            // Return the function of the controller
             return call_user_func(array($controller, $request->route->action["function"]));
         }
         else
         {
+            // Return a simple function
             return call_user_func($request->route->action["function"]);
         }
     }
