@@ -4,17 +4,19 @@
  */
 class View
 {
-    protected ?string $path;                 // Path of the view
-    protected array $datas;                 // Datas sended to the view
+    public string $view;                                        // Name of the view
+    protected array $datas;                                     // Datas sended to the view
+    private const PATH = __DIR__."/../../pages/views";          // Path of the views
+    private const EXTENSION = ".php";                           // Path of the views
 
     /**
      * View class constructor
      * 
      * @param path => Path of the view
      */
-    public function __construct(?string $path = null)
+    public function __construct(string $view, ?array $datas = null)
     {
-        $this->path = $path;
+        $this->view = $view;
     }
 
     /**
@@ -30,13 +32,43 @@ class View
 
     /**
      * Parse the datas and display the view
+     * 
+     * @return string => return the view content
      */
-    public function Parse()
+    public function Parse() : string
     {
-        
+        foreach ($this->datas as $key => $data) 
+        {
+            
+        }
+
+        // Get the view
+        $view = $this->Get();
+
+        // Replace variables
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        // Return the view content
+        return $content;
+    }
+
+    /**
+     * Get a view file
+     * 
+     * @return string => Content of a page
+     */
+    private function Get() : string
+    {
+        $path = null;
+        foreach (explode(".", $this->view) as $key => $file) 
+        {
+            $path .= "/".$file;
+        }
+        //die(self::PATH . $path);
+        // Return the content of a view
+        return file_get_contents(self::PATH . $path . self::EXTENSION);
     }
 }
 ?>
-<!-- 
-// Return the content of a view
-        return file_get_contents(__DIR__."/../pages/views/".$folder."/".$file); -->

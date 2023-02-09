@@ -9,17 +9,12 @@ class HomeController extends Controller
 {
     public function Home()
     {
-        return view("Home")->WithDatas(
+        return view("home.Home")->WithDatas(
             [
                 "test" => "toto"
             ]
         )->Parse();
     }
-    // ->WithDatas(
-    //     [
-    //         "test" => "toto"
-    //     ]
-    // );
 
     public function Contact()
     {

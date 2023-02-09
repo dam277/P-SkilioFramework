@@ -11,8 +11,7 @@ include_once __DIR__."/../../controllers/HomeController.php";
 class MainController extends Controller
 {
     protected string $views = "pages/views/";       // Folder of the views
-    protected string $folder;                       // Folder of the view
-    protected string $file;                         // View file
+    protected string $folder, $file;                       // Folder and file of the View 
 
     /**
      * Dispatch datas into display page

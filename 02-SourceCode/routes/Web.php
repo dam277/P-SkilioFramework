@@ -3,7 +3,7 @@ include_once __DIR__."/../core/global/view.php";
 
 Route::Post("/anonym", function(){
     return "C'est une fonction anonyme";
-});
+})->Name("Anonym");
 
 Route::Post("/about", function(){
     return view("About")->WithDatas(
@@ -21,9 +21,9 @@ Route::Post("/about", function(){
 //     ]
 // );
 
-Route::Post("/contact", "HomeController@Contact");
+Route::Post("/contact", "HomeController@Contact")->Name("Contact");
 
-Route::Post("/", [HomeController::class, 'Home']);
+Route::Post("/", [HomeController::class, 'Home'])->Name("Home");
 
 // Route::Group("/admin", [AdminController::class, function()
 // {
