@@ -9,7 +9,6 @@ include_once __DIR__."/../../controllers/HomeController.php";
 abstract class Controller
 {
     public static array $permissions;     // Permissions to access some page
-    protected string $folder, $file;      // Folder and file of the page to display
 
     /**
      * Execute a function

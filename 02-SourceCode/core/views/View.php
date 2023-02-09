@@ -37,11 +37,6 @@ class View
      */
     public function Parse() : string
     {
-        foreach ($this->datas as $key => $data) 
-        {
-            
-        }
-
         // Get the view
         $view = $this->Get();
 
@@ -61,12 +56,14 @@ class View
      */
     private function Get() : string
     {
+        // Set the path of the file
         $path = null;
-        foreach (explode(".", $this->view) as $key => $file) 
+        foreach (explode("." || "->" || "/", $this->view) as $key => $file) 
         {
+            var_dump($file);
             $path .= "/".$file;
         }
-        //die(self::PATH . $path);
+        
         // Return the content of a view
         return file_get_contents(self::PATH . $path . self::EXTENSION);
     }
