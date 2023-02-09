@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function Home()
     {
-        return view("home.Home")->WithDatas(
+        return view("home->Home")->WithDatas(
             [
                 "test" => "toto"
             ]

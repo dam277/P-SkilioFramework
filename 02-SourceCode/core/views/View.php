@@ -58,9 +58,8 @@ class View
     {
         // Set the path of the file
         $path = null;
-        foreach (explode("." || "->" || "/", $this->view) as $key => $file) 
+        foreach (explode("->", $this->view) as $key => $file) 
         {
-            var_dump($file);
             $path .= "/".$file;
         }
         
