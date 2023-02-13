@@ -43,7 +43,7 @@
    ## <p align="center">The project</p>
    The project consists to create an entire PHP web framework (Skilio)
    
-   ## <p align="center">Features for futures versions</p>
+   ## <p>Features for futures versions</p>
     - Automatic commands to generate files
     - Basic auto Verifications for a sended form with options
     - Command witch generate automatically the connection and inscription back/front-end
