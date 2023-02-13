@@ -104,11 +104,8 @@
                 <dump>
                 [[ $var1 ]]
                 [[ $var2 ]]
-                </dump
-            - Mentions
-                - @include
-                @include fileName;
-                - 
+                </dump>
+                
                     
 <div align="center">
    ## <p align="center">Contributors</p>
