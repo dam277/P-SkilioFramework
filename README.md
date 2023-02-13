@@ -43,6 +43,7 @@
    ## <p align="center">The project</p>
    The project consists to create an entire PHP web framework (Skilio)
 </div>
+    
    ## <p>Features for futures versions</p>
     - Automatic commands to generate files
     - Basic auto Verifications for a sended form with options
@@ -108,6 +109,7 @@
                 - @include
                 @include fileName;
                 - 
+                    
 <div align="center">
    ## <p align="center">Contributors</p>
    <b>
