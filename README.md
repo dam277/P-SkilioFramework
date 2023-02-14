@@ -42,53 +42,72 @@
     
    ## <p align="center">The project</p>
    The project consists to create an entire PHP web framework (Skilio)
-   
-   ## <p align="center">Features</p>
-   ### **ALPHA 0.1**
-   Base source code library for the framework.
-   Implements the routing and redirections
-   ### **ALPHA 0.2**
-   Upgrade source code and implement more content
-   ### **ALPHA 1.0**
-   **Patch note**
-   <br> ********* <br>
-   **SOURCES REWORK** <br>
-   -- <br>
-   Complete rework of the code. Creating a core folder which contains all the base classes to automatically redirect and set the parameters in back-end.
-   <br> ********* <br>
-   **COMPONENT** <br>
-   -- <br>
-   Create a new view usefull element : Component
-   The components can be created by you in the component folder, with the ".component.php" extension and can be used in a view of your choice. It permits the creation of separated content for the view. <br>
-   Exemple : Create a "card" using css to display a user which can be reusable in differents views with the same appearance.
-   A component can accept datas from the view with an array and use the array variable `$componentValues` into the card with the key you created before.
-   Simple to use :
-   Set a component : `<?php echo Component::Set("fileName"/*Without extension*/, ["datas" => "data"]) ?>`
-   Display datas into the component : `<?= $componentValues["datas"] ?>` <br>
-   The components can be used with loops and conditions too (in and out the component)
-   Exemple of loop:
 </div>
-
-   >
-        foreach ($users as $key => $user) 
-        {
-            echo Component::Set("User", ["user" => $user]);
-        }
-        
+    
+   ## <p>Features for futures versions</p>
+    - Automatic commands to generate files
+    - Basic auto Verifications for a sended form with options
+    - Command witch generate automatically the connection and inscription back/front-end
+    - Migrations (Generation of complete database)
+    - Create a form with a php code in core
+    - Simplify checking some elements (like $errors->any)
+    - Ressource file with pre-implemented items
+        - The role of this ressource file is to pre-create some html element with some specific css :
+        Ressource :
+        // blue button
+        <btnBlue>
+            <button class="blue">
+                <span> Click me ! </span>
+            </button>
+        </btnBlue>
+        View file Home.skiliox.php :
+        <body>
+            <header></header>
+            <main>
+                <h1> Click here </h1>
+                <btnBlue>
+            </main>
+            <footer></footer>
+    - Template engine for this framewok :
+        - New file extension
+        Home.skiliox.php
+        - New HTML tags : 
+            - Conditions
+                - for 
+                <for $i = 0; $i < 5; $i++>
+                <p> Hello world [ [$i ]]</p>
+                </for>
+                - foreach
+                <foreach $item as $key => $value>
+                <p> [[ $key + " => " + $value ]]</p>
+                </foreach>
+                - forerror
+                <for $i = 0; $i < 5; $i++> || <foreach $item as $key => $value>
+                <p> [[ $i ]] [[ $key + " => " + $value ]]</p>
+                <forerror>
+                <p> Error detected // The $value of the item was not set </p>
+                </foreach>
+                - if
+                <if $var == 10>
+                <p> The variable is set to 10 </p>
+                <elseif $var < 10>
+                <p> The variable is under than 10 </p>
+                <else>
+                <p> The variable is upper than 10 </p>
+                </if>
+                - while 
+                <while $s < 10>
+                    <p> [[ $s ]] </p>
+                </while>
+            - Debug
+                - Var dump + pre
+                <dump>
+                [[ $var1 ]]
+                [[ $var2 ]]
+                </dump>
+                
+                    
 <div align="center">
-
-   <br> ********* <br>
-   **Errors** <br>
-   -- <br>
-   Errors corrections for the redirect
-   Errors corrections for the native css not found
-   <br> ********* <br>
-   **Demo** <br>
-   -- <br>
-   Adding a basic database script and some base pages for a mini demo
-   
-   ## <p align="center">Elements to do</p>
-
    ## <p align="center">Contributors</p>
    <b>
        <a href="https://github.com/dam277">Damien Loup</a>
